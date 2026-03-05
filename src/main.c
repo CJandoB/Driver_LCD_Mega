@@ -1,29 +1,21 @@
 #include <avr/io.h>
 #include <util/delay.h>
 #include "i2c.h"
+#include "lcd_pcf8574.h"
 
 #define LCD_ADDR 0x4E  // 0x4E (0x27 << 1) para la pantalla QAPASS
 
 int main(void) {
     i2c_init();
-    _delay_ms(100);
+    lcd_init();
 
-    while (1) {
-        // ENCENDER BACKLIGHT 
-        i2c_start();
-        i2c_write(LCD_ADDR);
-        i2c_write(0x08); // El bit 3 es el Backlight (0000 1000 en binario)
-        i2c_stop();
+    lcd_send_byte('H', RS_DATA);
+    lcd_send_byte('e', RS_DATA);
+    lcd_send_byte('l', RS_DATA);
+    lcd_send_byte('l', RS_DATA);
+    lcd_send_byte('o', RS_DATA);
 
-        _delay_ms(1000);
+    while(1) {}
 
-        // APAGAR BACKLIGHT 
-        i2c_start();
-        i2c_write(LCD_ADDR);
-        i2c_write(0x00); 
-        i2c_stop();
-
-        _delay_ms(1000);
-    }
     return 0;
 }
