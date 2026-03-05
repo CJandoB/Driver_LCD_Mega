@@ -8,5 +8,6 @@
 
 void lcd_send_byte(uint8_t data, uint8_t rs_mode);
 void lcd_init(void);
+void lcd_print_string(const char *str);
 
 #endif

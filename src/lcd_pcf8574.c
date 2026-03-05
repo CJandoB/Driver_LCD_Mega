@@ -63,3 +63,8 @@ void lcd_init(void) {
     lcd_send_byte(0x0C, RS_CMD); // Esto enciende la pantalla
 }
 
+void lcd_print_string(const char *str) {
+    while(*str != '\0') {
+        lcd_send_byte(*str++, RS_DATA);
+    }   
+}

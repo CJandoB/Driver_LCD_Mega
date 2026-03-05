@@ -9,11 +9,7 @@ int main(void) {
     i2c_init();
     lcd_init();
 
-    lcd_send_byte('H', RS_DATA);
-    lcd_send_byte('e', RS_DATA);
-    lcd_send_byte('l', RS_DATA);
-    lcd_send_byte('l', RS_DATA);
-    lcd_send_byte('o', RS_DATA);
+    lcd_print_string("Mira mi huevo");
 
     while(1) {}
 
